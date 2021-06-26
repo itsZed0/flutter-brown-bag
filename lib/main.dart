@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
+      /*  theme: ThemeData(
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -20,14 +20,87 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+        primarySwatch: Colors.green,
+      ), */
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: Text("App bar"),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text("Aaccount Name 1"),
+              accountEmail: Text("dsome@foam.com"),
+              currentAccountPicture: InkWell(
+                child: CircleAvatar(
+                  child: Icon(Icons.person),
+                ),
+                onTap: () {},
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Link1",
+              ),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Link2"),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Link2"),
+              onTap: () {},
+            )
+          ],
+        ),
+      ),
+      body: Container(
+        width: double.infinity,
+        // child: Align(
+        //   alignment:  Alignment.bottomCenter,
+        //   child: ElevatedButton(
+        //     child: Text("Button"),
+        //     onPressed: () {},
+        //   ),
+        // )
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "This is body",
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: Text("Button"),
+              onPressed: () {},
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        onPressed: () => {},
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+/* class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -45,7 +118,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -111,3 +184,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+ 
+ */

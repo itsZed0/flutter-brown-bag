@@ -1,3 +1,4 @@
+import 'package:brownbag/second_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -99,7 +100,10 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 20),
               ElevatedButton(
                 child: Text("Button"),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => SecondPage()));
+                },
               )
             ],
           ),

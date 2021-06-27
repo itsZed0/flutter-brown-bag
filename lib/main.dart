@@ -27,74 +27,88 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int counter = 0;
+  void increment() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text("App bar"),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: Text("Aaccount Name 1"),
-              accountEmail: Text("dsome@foam.com"),
-              currentAccountPicture: InkWell(
-                child: CircleAvatar(
-                  child: Icon(Icons.person),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+          title: Text("App bar otnasba "),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("Aaccount Name 1"),
+                accountEmail: Text("dsome@foam.com"),
+                currentAccountPicture: InkWell(
+                  child: CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  onTap: () {},
+                ),
+              ),
+              ListTile(
+                title: Text(
+                  "Link1",
                 ),
                 onTap: () {},
               ),
-            ),
-            ListTile(
-              title: Text(
-                "Link1",
+              ListTile(
+                title: Text("Link2"),
+                onTap: () {},
               ),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text("Link2"),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text("Link2"),
-              onTap: () {},
-            )
-          ],
+              ListTile(
+                title: Text("Link2"),
+                onTap: () {},
+              )
+            ],
+          ),
         ),
-      ),
-      body: Container(
-        width: double.infinity,
-        // child: Align(
-        //   alignment:  Alignment.bottomCenter,
-        //   child: ElevatedButton(
-        //     child: Text("Button"),
-        //     onPressed: () {},
-        //   ),
-        // )
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "This is body",
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              child: Text("Button"),
-              onPressed: () {},
-            )
-          ],
+        body: Container(
+          width: double.infinity,
+          // child: Align(
+          //   alignment:  Alignment.bottomCenter,
+          //   child: ElevatedButton(
+          //     child: Text("Button"),
+          //     onPressed: () {},
+          //   ),
+          // )
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Count value $counter',
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                child: Text("Button"),
+                onPressed: () {},
+              )
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
-        onPressed: () => {},
-        child: Icon(Icons.add),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.green,
+          onPressed: increment,
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }

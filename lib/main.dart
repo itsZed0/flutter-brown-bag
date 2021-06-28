@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      routes: {'/second': (_) => SecondPage()},
       /*  theme: ThemeData(
         // This is the theme of your application.
         //
@@ -101,8 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ElevatedButton(
                 child: Text("Button"),
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => SecondPage()));
+                  Navigator.pushNamed(context, '/second');
                 },
               )
             ],

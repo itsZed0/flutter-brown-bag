@@ -5,6 +5,8 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
+    print(args['title']);
     return Scaffold(
       body: Container(
           child: ElevatedButton(

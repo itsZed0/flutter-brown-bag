@@ -11,7 +11,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      routes: {'/second': (_) => SecondPage()},
+      onGenerateRoute: (settings) {
+        final args = settings.arguments as Map;
+        switch (settings.name) {
+          case '/second':
+            return MaterialPageRoute(
+                builder: (_) => SecondPage(
+                    title: args["title"], decription: args["description"]));
+        }
+      },
       theme: ThemeData(
           // This is the theme of your application.
           //
@@ -105,7 +113,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(
                     context,
                     '/second',
-                    arguments: {'title': 'title', 'desciption': 'descr'},
+                    arguments: {
+                      'title': 'dummy title',
+                      'description': 'dummy descr'
+                    },
                   );
                 },
               )
